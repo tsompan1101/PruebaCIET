@@ -1,0 +1,411 @@
+================================================================================
+Sala: Escenario Principal
+Inicio: 10:00
+Fin: 11:30
+Tipo: Ceremonia
+Tema: None
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Ceremonia de Inauguración
+================================================================================
+Sala: Escenario Principal
+Inicio: 11:30
+Fin: 12:10
+Tipo: Conferencia Magistral
+Tema: Gas Natural y comercio Transfronterizo: oportunidades para la frontera norte Juan José Vidal Amaro, Subsecretario de Hidrocarburos de la Secretaría de Energía (Subsecretario de Planeación SENER)
+Ponentes: ['Juan José Vidal Amaro', 'Subsecretario de Hidrocarburos']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia Magistral 
+Tema: Gas Natural y comercio Transfronterizo: oportunidades para la frontera norte
+
+Juan José Vidal Amaro, Subsecretario de Hidrocarburos de la Secretaría de Energía
+(Subsecretario de Planeación SENER)
+================================================================================
+Sala: Escenario Principal
+Inicio: 12:20
+Fin: 12:30
+Tipo: Actividad
+Tema: None
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Corte de listón de Feria Industrial
+================================================================================
+Sala: SALÓN PRINCIPAL
+Inicio: 13:00
+Fin: 13:50
+Tipo: Conferencia
+Tema: [Ver el futuro del precio: modelos de mercado, analítica y decisiones de inversión en la red distribuida] [Aurora, Amperon, Modo ]
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia 
+
+Tema:  [Ver el futuro del precio: modelos de mercado, analítica y decisiones de inversión en la red distribuida]
+
+[Aurora, Amperon, Modo ]
+================================================================================
+Sala: SALÓN NUEVO LAREDO
+Inicio: 13:00
+Fin: 13:50
+Tipo: Conferencia
+Tema: Metrología para infraestructura de gas natural: valores de referencia y confiabilidad de la medición Mtro. Arquimedes Ruíz Orozco, Director General, Centro Nacional de Metrología - CENAM
+Ponentes: ['Mtro', 'Arquimedes Ruíz Orozco']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia
+
+Tema: Metrología para infraestructura de gas natural: valores de referencia y confiabilidad de la medición
+
+Mtro. Arquimedes Ruíz Orozco, Director General, Centro Nacional de Metrología - CENAM
+================================================================================
+Sala: SALÓN REYNOSA
+Inicio: 13:00
+Fin: 13:50
+Tipo: Conferencia
+Tema: Tamaulipas como referente energético nacional en el contexto de la transición energética Ing. Walter Julián Angel Jiménez, Secretario de Desarrollo Energético Proyectos de Desarrollo de Inversiones mixtas Proyectos privados
+Ponentes: ['Ing. Walter Julián Angel Jiménez', 'Secretario de Desarrollo Energético \nProyectos de Desarrollo de Inversiones']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia
+
+Tema: Tamaulipas como referente energético nacional en el contexto de la transición energética
+
+Ing. Walter Julián Angel Jiménez, Secretario de Desarrollo Energético 
+Proyectos de Desarrollo de Inversiones mixtas
+Proyectos privados
+
+Moderador:
+================================================================================
+Sala: SALÓN MATAMOROS
+Inicio: 13:00
+Fin: 13:50
+Tipo: Conferencia
+Tema: Pirólisis y combustibles circulares: innovación tecnológica para el aprovechamiento energético de residuos Dr. Felipe Ortega, Investigador del instituto Mexicano del Petróleo
+Ponentes: ['Dr. Felipe Ortega']
+Moderadores: ['Pendiente de confirmar conferencista:']
+Dependencias: ['Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT).']
+Descripción: Conferencia
+
+Tema: Pirólisis y combustibles circulares: innovación tecnológica para el aprovechamiento energético de residuos
+
+Dr. Felipe Ortega, Investigador del instituto Mexicano del Petróleo
+
+
+
+
+Moderador: 
+
+Pendiente de confirmar conferencista:
+
+Empresas: CEMEX / Proambiente (pioneros en co-procesamiento de residuos), Pyrum Innovations (expertos en tecnología europea de pirólisis) .
+
+Dependencias: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT).
+================================================================================
+Sala: SALÓN PRINCIPAL
+Inicio: 11:00
+Fin: 12:00
+Tipo: Conferencia
+Tema: Comercio energético transfronterizo: gas natural, combustibles e infraestructura para el crecimiento industrial. Representante técnico-comercial de ENGIE México.
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia
+
+Tema: Comercio energético transfronterizo: gas natural, combustibles e infraestructura para el crecimiento industrial.
+
+Representante técnico-comercial de ENGIE México.
+================================================================================
+Sala: SALÓN NUEVO LAREDO
+Inicio: 11:00
+Fin: 12:00
+Tipo: Panel Técnico
+Tema: Lecciones aprendidas en el Campo Vaca Muerta y consideraciones técnicas para la Cuenca de Burgos. Ing. Germán Gómez, Director General México y Centro América, Baker Hughes. Ing. Hermes Aguirre, Vicepresidente para México, Halliburton. Ing. Edgardo Cáceres, Director General México, Weatherford. Ing. William Antonio, Director General México y Centro América, SLB.
+Ponentes: ['Germán Gómez', 'Baker Hughes', 'Ing. Hermes Aguirre', 'Ing. Edgardo Cáceres', 'Ing. William Antonio']
+Moderadores: []
+Dependencias: []
+Descripción: Panel técnico
+
+Tema: Lecciones aprendidas en el Campo Vaca Muerta y consideraciones técnicas para la Cuenca de Burgos.
+
+Ing. Germán Gómez, Director General México y Centro América, Baker Hughes.
+Ing. Hermes Aguirre, Vicepresidente para México, Halliburton.
+Ing. Edgardo Cáceres, Director General México, Weatherford.
+Ing. William Antonio, Director General México y Centro América, SLB.
+
+Moderador:
+================================================================================
+Sala: SALÓN REYNOSA
+Inicio: 11:00
+Fin: 12:00
+Tipo: Panel Técnico
+Tema: Mujer en el sector eléctrico. [Nota: reducir a 4 o dividir en dos paneles] Alejandra Paola Matus Sánchez, Sustainable Business Development en Siemens. Zelina Fernández Alanís, Directora General de Index Nuevo León. Catalina Delgado, Directora Public Affairs at Invenergy LLC. Ing. Karen Luna, Manager de Blades para Vestas. Ing. Kenia Itzel Jiménez, Supervisora del Parque Eólico Salitrillos en Reynosa. Katya Samoano, CEO de Iberdrola México. Eneida Góngora, Presidenta de Women´s Energy Network México.
+Ponentes: ['Alejandra Paola Matus Sánchez', 'Zelina Fernández Alanís', 'Catalina Delgado', 'Ing. Karen Luna', 'Manager de Blades', 'Vestas', 'Ing. Kenia Itzel Jiménez', 'Katya Samoano', 'Eneida Góngora', 'Elizabeth Martínez Saldaña', 'Directora de Energías Renovables']
+Moderadores: ['Lic. Elizabeth Martínez Saldaña, Directora de Energías Renovables y Eficiencia Energética']
+Dependencias: []
+Descripción: Panel técnico
+
+Tema: Mujer en el sector eléctrico.
+
+[Nota: reducir a 4 o dividir en dos paneles]
+Alejandra Paola Matus Sánchez, Sustainable Business Development en Siemens. 
+Zelina Fernández Alanís, Directora General de Index Nuevo León.
+Catalina Delgado, Directora Public Affairs at Invenergy LLC. 
+Ing. Karen Luna, Manager de Blades para Vestas. 
+Ing. Kenia Itzel Jiménez, Supervisora del Parque Eólico Salitrillos en Reynosa.
+Katya Samoano, CEO de Iberdrola México.
+Eneida Góngora, Presidenta de Women´s Energy Network México.
+
+Moderador: Lic. Elizabeth Martínez Saldaña, Directora de Energías Renovables y Eficiencia Energética
+================================================================================
+Sala: SALÓN MATAMOROS
+Inicio: 11:00
+Fin: 12:00
+Tipo: Panel Técnico
+Tema: La Energía eólica como parte importante de las energías renovables en Tamaulipas Adalberto Garcá Medrano, Presidente y CEO de AES México y Presidente de la Asociación Mexicana de Energía (AME) Brice Clemente, Director General de Engie México Gabriel Monroy, Country Manager de Invenergy México Gerardo Pérez Guerra, Director General de la Asociación Nacional de Energía Eólica (AMDEE) Jorge Paso, CEO de Acciona José Martín Valencia, Head Global Power Strategy de la Empresa Cemex.
+Ponentes: ['Adalberto Garcá Medrano', 'Presidente', 'Brice Clemente', 'Gabriel Monroy', 'Gerardo Pérez Guerra', 'Jorge Paso', 'José Martín Valencia']
+Moderadores: []
+Dependencias: []
+Descripción: Panel Técnico
+
+Tema: La Energía eólica como parte importante de las energías renovables en Tamaulipas
+
+Adalberto Garcá Medrano, Presidente y CEO de AES México y Presidente de la Asociación Mexicana de Energía (AME)
+Brice Clemente, Director General de Engie México
+Gabriel Monroy, Country Manager de Invenergy México
+Gerardo Pérez Guerra, Director General de la Asociación Nacional de Energía Eólica (AMDEE)
+Jorge Paso, CEO de Acciona
+José Martín Valencia, Head Global Power Strategy de la Empresa Cemex.
+
+Moderador:
+================================================================================
+Sala: SALÓN PRINCIPAL
+Inicio: 11:00
+Fin: 12:00
+Tipo: Panel
+Tema: [Financiamiento multilateral para la descarbonización: instrumentos, condiciones y ventanas de oportunidad en México.] [ BEI, KfW DEG, IFC]
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Panel
+
+Tema: [Financiamiento multilateral para la descarbonización: instrumentos, condiciones y ventanas de oportunidad en México.]
+
+[ BEI, KfW DEG, IFC]
+
+Moderador:
+================================================================================
+Sala: SALÓN NUEVO LAREDO
+Inicio: 11:00
+Fin: 12:00
+Tipo: Conferencia
+Tema: Terminales de almacenamiento de combustibles: experiencia operativa y oportunidades para Altamira. Mtro. Gerardo Hernández Varga, Director de Relaciones Gubernamentales, Valero.
+Ponentes: ['Gerardo Hernández Varga']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia
+
+
+Tema: Terminales de almacenamiento de combustibles: experiencia operativa y oportunidades para Altamira.
+
+
+Mtro. Gerardo Hernández Varga, Director de Relaciones Gubernamentales, Valero.
+================================================================================
+Sala: SALÓN REYNOSA
+Inicio: 11:00
+Fin: 12:00
+Tipo: Panel Técnico
+Tema: Generación Renovable como aspecto fundamental en la transición energética. [Nota: de que dependencia proviene Carlos Aurelio?; Tomar en cuenta al de Reyco] José Antonio Soro, Representante Legal de la Empresa CÚBICO. María Fernanda Matus Figureola, Gerente de Desarrollo de Negocios Estratégicos en Skysense. Carlos Aurelio Hernández González Angie Soto, Directora General de Nx Buena Energía. Luca Noviello Responsable de Ingeniería y Construcción de la Empresa Enel Green Power.
+Ponentes: ['Carlos Aurelio?', 'José Antonio Soro', 'María Fernanda Matus Figureola', 'Carlos Aurelio Hernández González\nAngie Soto', 'Directora General de Nx Buena Energía', 'Luca Noviello Responsable de Ingeniería y Construcción de la Empresa Enel Green Power']
+Moderadores: []
+Dependencias: []
+Descripción: Panel Técnico
+
+Tema: Generación Renovable como aspecto fundamental en la transición energética.
+[Nota: de que dependencia proviene Carlos Aurelio?; Tomar en cuenta al de Reyco]
+José Antonio Soro, Representante Legal de la Empresa CÚBICO.
+María Fernanda Matus Figureola, Gerente de Desarrollo de Negocios Estratégicos en Skysense.
+Carlos Aurelio Hernández González
+Angie Soto, Directora General de Nx Buena Energía.
+Luca Noviello Responsable de Ingeniería y Construcción de la Empresa Enel Green Power.
+
+Moderador:
+================================================================================
+Sala: SALÓN MATAMOROS
+Inicio: 11:00
+Fin: 12:00
+Tipo: Conferencia
+Tema: Reducción de emisiones en operaciones de exploración y producción: eficiencia sin comprometer productividad. Representante técnico de Baker Hughes México.
+Ponentes: ['Baker Hughes']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia
+
+Tema: Reducción de emisiones en operaciones de exploración y producción: eficiencia sin comprometer productividad.
+
+Representante técnico de Baker Hughes México.
+================================================================================
+Sala: SALÓN PRINCIPAL
+Inicio: 13:20
+Fin: 14:20
+Tipo: Panel
+Tema: [La demanda que no duerme: centros de datos, inteligencia artificial y el sistema eléctrico.] [Google, Amazon, Equinix, KIO ]
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Panel
+
+Tema: [La demanda que no duerme: centros de datos, inteligencia artificial y el sistema eléctrico.]
+
+[Google, Amazon, Equinix, KIO ]
+
+Moderador:
+================================================================================
+Sala: SALÓN NUEVO LAREDO
+Inicio: 13:20
+Fin: 14:20
+Tipo: Taller
+Tema: Clúster de Petróleo y Gas: articulación de proveedores y capacidades empresariales en Tamaulipas. Ponente pendiente de confirmar. Ing. Carlos Vicencio Morán, Técnico, SEDENER.
+Ponentes: ['Ing. Carlos Vicencio Morán']
+Moderadores: []
+Dependencias: []
+Descripción: Taller
+
+
+Tema: Clúster de Petróleo y Gas: articulación de proveedores y capacidades empresariales en Tamaulipas.
+
+Ponente pendiente de confirmar.
+Ing. Carlos Vicencio Morán, Técnico, SEDENER.
+================================================================================
+Sala: SALÓN REYNOSA
+Inicio: 13:20
+Fin: 14:20
+Tipo: Panel Técnico
+Tema: La Economía Circular como Modelo Económico para Maximizar el uso de los Recursos Importancia de la Economía Circular en el Sector Eléctrico ¿Qué queremos que se haga en el sector eléctrico para dar cumplimiento a las metas nacionales de economía circular? [Nota: Definir mejor el título y reducirlo] Dr. Carlos Omar Castillo Araiza, Profesor titular en el área de Ingenieria Química Universidad Autónoma Metropolitana. Dra. Cristina Cortinas Durán, Presidenta de la Fundación Cristina Cortinas. Carmelo Zavala Alvarez, Director y Fundador del Centro de Innovación y Gestión Ambiental (CIGA) Sheila Guadalupe Cadena Nieto, Secretaria de Medio Ambiente y Desarrollo Sostenible del Gobierno de Tabasco Ing. Horacio del Angel Castillo, Titular de la Oficina de Representación en Tamaulipas de la SEMARNAT.
+Ponentes: ['Dr. Carlos Omar Castillo Araiza', 'Profesor', 'Carmelo Zavala Alvarez', 'Director', 'Sheila Guadalupe Cadena  Nieto', 'Angel Castillo', 'Karla Cedano', 'Jefa del']
+Moderadores: ['Karla Cedano, Jefa del Departamento de Innovación Estratégica del Instituto de Energías Renovables de la UNAM.']
+Dependencias: []
+Descripción: Panel Técnico
+
+Tema: La Economía Circular como Modelo Económico para Maximizar el uso de los Recursos
+Importancia de la Economía Circular en el Sector Eléctrico ¿Qué queremos que se haga en el sector eléctrico para dar cumplimiento a las metas nacionales de economía circular?
+[Nota: Definir mejor el título y reducirlo]
+Dr. Carlos Omar Castillo Araiza, Profesor titular en el área de Ingenieria Química Universidad Autónoma Metropolitana.
+Dra. Cristina Cortinas Durán, Presidenta de la Fundación Cristina Cortinas.
+Carmelo Zavala Alvarez, Director y Fundador del Centro de Innovación y Gestión Ambiental (CIGA)
+Sheila Guadalupe Cadena  Nieto, Secretaria de Medio Ambiente y Desarrollo Sostenible del Gobierno de Tabasco
+Ing. Horacio del Angel Castillo, Titular de la Oficina de Representación en Tamaulipas de la SEMARNAT.
+
+Moderador: Karla Cedano, Jefa del Departamento de Innovación Estratégica del Instituto de Energías Renovables de la UNAM.
+================================================================================
+Sala: SALÓN MATAMOROS
+Inicio: 13:20
+Fin: 14:20
+Tipo: Taller
+Tema: ¿Sabes cómo la energía y la robótica están transformando México? Maestro. Jesús Guadalupe Herrera Vanoye, Director de Laboratorios, Ai Cistem Labs
+Ponentes: ['Jesús Guadalupe Herrera Vanoye']
+Moderadores: []
+Dependencias: []
+Descripción: Taller
+
+Tema: ¿Sabes cómo la energía y la robótica están transformando México?
+
+Maestro. Jesús Guadalupe Herrera Vanoye, Director de Laboratorios, Ai Cistem Labs
+================================================================================
+Sala: SALÓN PRINCIPAL
+Inicio: 14:30
+Fin: 15:30
+Tipo: Conferencia Magistral
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027. Pablo Sherwell, Lead of F&A Data Analytics - North America Galo Galeana, U.S. Grains.
+Ponentes: ['Pablo Sherwell']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia Magistral
+
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027.
+Pablo Sherwell, Lead of F&A Data Analytics - North America
+Galo Galeana, U.S. Grains.
+================================================================================
+Sala: SALÓN NUEVO LAREDO
+Inicio: 14:30
+Fin: 15:30
+Tipo: Conferencia Magistral
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027. Pablo Sherwell, Lead of F&A Data Analytics - North America Galo Galeana, U.S. Grains.
+Ponentes: ['Pablo Sherwell']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia Magistral
+
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027.
+Pablo Sherwell, Lead of F&A Data Analytics - North America
+Galo Galeana, U.S. Grains.
+================================================================================
+Sala: SALÓN REYNOSA
+Inicio: 14:30
+Fin: 15:30
+Tipo: Conferencia Magistral
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027. Pablo Sherwell, Lead of F&A Data Analytics - North America Galo Galeana, U.S. Grains.
+Ponentes: ['Pablo Sherwell']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia Magistral
+
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027.
+Pablo Sherwell, Lead of F&A Data Analytics - North America
+Galo Galeana, U.S. Grains.
+================================================================================
+Sala: SALÓN MATAMOROS
+Inicio: 14:30
+Fin: 15:30
+Tipo: Conferencia Magistral
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027. Pablo Sherwell, Lead of F&A Data Analytics - North America Galo Galeana, U.S. Grains.
+Ponentes: ['Pablo Sherwell']
+Moderadores: []
+Dependencias: []
+Descripción: Conferencia Magistral
+
+Tema: Biocombustibles en la Encrucijada: Rentabilidad, disponibilidad de tierra y mercado de commodities hacia 2027.
+Pablo Sherwell, Lead of F&A Data Analytics - North America
+Galo Galeana, U.S. Grains.
+================================================================================
+Sala: SALÓN PRINCIPAL
+Inicio: 15:40
+Fin: 16:40
+Tipo: Ceremonia
+Tema: None
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Ceremonia de Clausura
+================================================================================
+Sala: SALÓN NUEVO LAREDO
+Inicio: 15:40
+Fin: 16:40
+Tipo: Ceremonia
+Tema: None
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Ceremonia de Clausura
+================================================================================
+Sala: SALÓN REYNOSA
+Inicio: 15:40
+Fin: 16:40
+Tipo: Ceremonia
+Tema: None
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Ceremonia de Clausura
+================================================================================
+Sala: SALÓN MATAMOROS
+Inicio: 15:40
+Fin: 16:40
+Tipo: Ceremonia
+Tema: None
+Ponentes: []
+Moderadores: []
+Dependencias: []
+Descripción: Ceremonia de Clausura

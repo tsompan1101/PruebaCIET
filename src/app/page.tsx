@@ -1,0 +1,74 @@
+export default function HomePage() {
+  return (
+    <div className="page-home">
+      <section className="section hero">
+        <div className="hero-inner">
+          <div className="hero-content">
+            <div className="hero-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="hero-badge-icon-bolt">
+                <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+              </svg>
+            </div>
+
+            <p className="hero-eyebrow">Congreso</p>
+            <h1 className="hero-title">
+              Internacional
+              <br />
+              <strong>de Energía</strong>
+            </h1>
+            <p className="hero-year">Tamaulipas 2026</p>
+
+            <div className="hero-dates">
+              <span className="hero-dates-days">27 · 28 · 29</span>
+              <span className="hero-dates-detail">
+                Octubre 2026
+                <br />
+                Expo Tampico
+              </span>
+            </div>
+
+            <p className="hero-description">
+              Del 27 al 29 de octubre en la Expo Tampico, líderes y expertos
+              del sector energético se reúnen para{" "}
+              <strong>
+                impulsar la innovación, transición, soberanía y justicia
+                energética.
+              </strong>
+            </p>
+
+            <div className="hero-actions">
+              <button className="btn btn-primary" type="button">
+                Regístrate ahora
+              </button>
+              <button className="btn btn-outline" type="button">
+                Acerca del evento
+              </button>
+            </div>
+          </div>
+
+          <div className="hero-visual">
+            <div className="hero-image-frame">
+              {/* IMAGEN_HERO_AQUI: reemplazar por <img src="/hero-energia.png" alt="..." /> */}
+              Imagen hero aquí
+            </div>
+          </div>
+        </div>
+
+        <svg
+          className="hero-wave"
+          viewBox="0 0 1440 90"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d="M0,48 C240,90 480,0 720,24 C960,48 1200,84 1440,36 L1440,90 L0,90 Z" />
+        </svg>
+      </section>
+
+      <section className="section about" />
+      <section className="section servicios" />
+      <section className="section galeria" />
+      <section className="section contacto" />
+      <section className="section footer" />
+    </div>
+  );
+}

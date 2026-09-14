@@ -1,0 +1,10 @@
+Hacer:
++configurar .env
++vistas en postgres
++ajustar tablas
++crear mas triggers
++ajustar direcciones url
+-ajustar direcciones api
+-crossplatform compile
+-migrar db
+-hacer pruebas 

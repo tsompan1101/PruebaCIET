@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import PublicMap from "@/components/RecintoInteractivo2";
-import { getstands } from "@lib/data";
 
 export const revalidate = 60;
 

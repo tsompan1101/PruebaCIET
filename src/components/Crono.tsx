@@ -44,7 +44,7 @@ export default function Cronograma ({
     const [selectedDay, setSelectedDay] = useState<string | null>(
         days[0] ?? null
     );
-    const [selected, setSelected] = useState<string | null>(null);
+    const [selected, setSelected] = useState<Actividad | null>(null);
     const [modalVisible, setModalVisible] = useState(false);
 
     const dayActividades = useMemo(

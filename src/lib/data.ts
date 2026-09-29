@@ -1,4 +1,4 @@
-const API_URL = process.env.API_URL ?? "http://100.67.104.21:3000";
+const API_URL = process.env.API_URL ?? "https://intermetatarsal-monnie-discriminatively.ngrok-free.dev";
 
 // El API vive en la red interna, por lo que puede no estar disponible durante el
 // build. Devolvemos una lista vacía en ese caso para que el prerender no falle;

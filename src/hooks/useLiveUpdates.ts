@@ -15,13 +15,14 @@ const TABLAS_POR_TAG: Record<string, string[]> = {
 
 let cliente: SupabaseClient | null = null;
 
-function getCliente(): SupabaseClient {
+function getCliente(): SupabaseClient | null {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
   if (!cliente) {
-    cliente = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL as string,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
-      { auth: { persistSession: false, autoRefreshToken: false } },
-    );
+    cliente = createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
   }
   return cliente;
 }
@@ -34,6 +35,7 @@ export function useLiveUpdates(tag: string) {
 
   useEffect(() => {
     const supabase = getCliente();
+    if (!supabase) return; // Sin credenciales no hay actualizaciones en vivo.
     const tablas = TABLAS_POR_TAG[tag] ?? [tag];
     let timer: ReturnType<typeof setTimeout> | undefined;
 

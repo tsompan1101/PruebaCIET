@@ -1,4 +1,4 @@
-import PonenteCard, { PonenteCardProps } from "../../componentes/PonenteCard";
+import PonenteCard, { PonenteCardProps } from "@/components/PonenteCard";
 // Ajusta esta ruta de import según el alias que tengas configurado,
 // por ejemplo "@/componentes/PonenteCard" si usas el alias "@" -> "./".
 

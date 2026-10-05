@@ -1,5 +1,5 @@
 import PonenteCard, { PonenteCardProps } from "@/components/PonenteCard";
-import { supabasePublico } from "@/lib/supabase";
+import { supabaseConfigurado, supabasePublico } from "@/lib/supabase";
 // Ajusta estas rutas según el alias que tengas configurado,
 // por ejemplo "@/componentes/PonenteCard" si usas el alias "@" -> "./".
 
@@ -32,6 +32,8 @@ function dividirNombre(nombre: string): [string, string] {
 const LINKEDIN = /https?:\/\/[^\s,;]*linkedin\.com[^\s,;]*/i;
 
 async function obtenerPonentes(): Promise<Ponente[]> {
+  if (!supabaseConfigurado) return [];
+
   // Solo columnas públicas: nunca se pide correo ni teléfono.
   const { data, error } = await supabasePublico("participantes")
     .from("participantes")

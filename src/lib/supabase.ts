@@ -3,9 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-if (!url || !key) {
-  throw new Error(
-    "Faltan NEXT_PUBLIC_SUPABASE_URL o NEXT_PUBLIC_SUPABASE_ANON_KEY en .env.local",
+// Sin credenciales no se rompe el build: las páginas se muestran vacías hasta configurarlas
+// (en .env.local para desarrollo, o en las variables de entorno del sitio en Netlify).
+export const supabaseConfigurado = Boolean(url && key);
+
+if (!supabaseConfigurado) {
+  console.warn(
+    "Faltan NEXT_PUBLIC_SUPABASE_URL o NEXT_PUBLIC_SUPABASE_ANON_KEY: no se cargarán datos de Supabase.",
   );
 }
 

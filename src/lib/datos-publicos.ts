@@ -1,4 +1,4 @@
-import { supabasePublico } from "@/lib/supabase";
+import { supabaseConfigurado, supabasePublico } from "@/lib/supabase";
 
 /* ---------- Tipos ---------- */
 
@@ -43,6 +43,8 @@ export type Zone = {
 
 // Vista programa_cronograma. El tag "cronograma" es el mismo que usa useLiveUpdates.
 export async function getCronograma(): Promise<Actividad[]> {
+  if (!supabaseConfigurado) return [];
+
   const { data, error } = await supabasePublico("cronograma")
     .from("programa_cronograma")
     .select("*")
@@ -68,6 +70,8 @@ export async function getCronograma(): Promise<Actividad[]> {
 
 // Vista zonas_mapa. Si la zona viene en una columna JSONB `data`, se aplana.
 export async function getZonas(): Promise<Zone[]> {
+  if (!supabaseConfigurado) return [];
+
   const { data, error } = await supabasePublico("zonas")
     .from("zonas_mapa")
     .select("*");

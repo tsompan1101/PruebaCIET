@@ -2,42 +2,63 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { revalidarTag } from "@/app/actions/revalidar";
 
-// El servidor Rust ya avisa a /api/revalidate por su cuenta (server-to-server)
-// cada vez que cambia algo en Postgres, así que este hook YA NO llama a
-// /api/revalidate — solo escucha el WebSocket y le pide a Next.js que vuelva
-// a pintar la página con lo que Rust ya dejó fresco en el caché.
-export function useLiveUpdates(tag: "cronograma" | "stands") {
+// Tablas reales (no vistas) que alimentan cada tag. Supabase Realtime no emite
+// eventos de vistas, así que hay que escuchar las tablas de origen.
+// AJUSTA estos nombres a tu esquema.
+const TABLAS_POR_TAG: Record<string, string[]> = {
+  cronograma: ["charlas"],
+  zonas: ["zonas", "stands"],
+};
+
+let cliente: SupabaseClient | null = null;
+
+function getCliente(): SupabaseClient {
+  if (!cliente) {
+    cliente = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
+      { auth: { persistSession: false, autoRefreshToken: false } },
+    );
+  }
+  return cliente;
+}
+
+// Misma firma que antes: useLiveUpdates("cronograma").
+// Cuando cambia una tabla en Supabase, invalida el caché del tag y vuelve a
+// renderizar la página en el servidor con los datos nuevos.
+export function useLiveUpdates(tag: string) {
   const router = useRouter();
 
   useEffect(() => {
-    const wsUrl = process.env.NEXT_PUBLIC_WS_URL;
-    if (!wsUrl) {
-      console.warn("NEXT_PUBLIC_WS_URL no está configurado.");
-      return;
+    const supabase = getCliente();
+    const tablas = TABLAS_POR_TAG[tag] ?? [tag];
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    // Agrupa ráfagas de cambios (p. ej. un PUT que reemplaza todas las zonas).
+    const refrescar = () => {
+      clearTimeout(timer);
+      timer = setTimeout(async () => {
+        await revalidarTag(tag);
+        router.refresh();
+      }, 500);
+    };
+
+    let canal = supabase.channel(`live-${tag}`);
+    for (const table of tablas) {
+      canal = canal.on(
+        "postgres_changes",
+        { event: "*", schema: "public", table },
+        refrescar,
+      );
     }
+    canal.subscribe();
 
-    const socket = new WebSocket(wsUrl);
-
-    socket.onmessage = (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        // El servidor manda el nombre de la tabla en "table", no "tipo".
-        if (data.table && data.table !== tag) return;
-      } catch {
-        return;
-      }
-
-      // Rust ya invalidó el caché (revalidateTag) antes de que llegue este
-      // mensaje — aquí solo se le pide al router que vuelva a pedir los
-      // Server Components para que la UI de esta pestaña se actualice sola.
-      router.refresh();
+    return () => {
+      clearTimeout(timer);
+      supabase.removeChannel(canal);
     };
-
-    socket.onerror = () => {
-      console.warn("Error de conexión al WebSocket:", wsUrl);
-    };
-
-    return () => socket.close();
   }, [tag, router]);
 }

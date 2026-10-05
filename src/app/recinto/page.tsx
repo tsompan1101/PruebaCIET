@@ -1,15 +1,7 @@
-import { Suspense } from "react";
 import PublicMap from "@/components/RecintoInteractivo2";
-import { getstands } from "@lib/data";
+import { getZonas } from "@/lib/datos-publicos";
 
-export const revalidate = 60;
-
-export default function MapaPublicoPage() {
-    return (
-        <div className="page-mapa">
-            <Suspense fallback={null}>
-                <PublicMap />
-            </Suspense>
-        </div>
-    );
+export default async function Page() {
+  const zonas = await getZonas();
+  return <PublicMap initialZones={zonas} />;
 }

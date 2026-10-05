@@ -47,9 +47,9 @@ export default function HomePage() {
           </div>
 
           <div className="hero-visual">
-            <div className="hero-image-frame">
+            <div className="">
               {/* IMAGEN_HERO_AQUI: reemplazar por <img src="/hero-energia.png" alt="..." /> */}
-              Imagen hero aquí
+              <img src="/ciet2026.webp" />
             </div>
           </div>
         </div>
@@ -64,11 +64,6 @@ export default function HomePage() {
         </svg>
       </section>
 
-      <section className="section about" />
-      <section className="section servicios" />
-      <section className="section galeria" />
-      <section className="section contacto" />
-      <section className="section footer" />
     </div>
   );
 }

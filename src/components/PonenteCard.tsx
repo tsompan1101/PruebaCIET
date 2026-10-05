@@ -3,6 +3,7 @@ export interface PonenteCardProps {
   lastLine: string;
   role: string;
   linkedinUrl?: string | null;
+  imageUrl?: string | null;
 }
 
 export default function PonenteCard({
@@ -10,13 +11,23 @@ export default function PonenteCard({
   lastLine,
   role,
   linkedinUrl,
+  imageUrl,
 }: PonenteCardProps) {
   return (
     <article className="ponente-card">
       <div className="ponente-photo">
-        {/* FOTO_PONENTE_AQUI: reemplazar por <img src="..." alt={`${firstLine} ${lastLine}`} /> */}
         <div className="ponente-photo-placeholder">
-          Foto de {firstLine} {lastLine}
+          {imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={imageUrl}
+              alt={`${firstLine} ${lastLine}`}
+              loading="lazy"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
+          ) : (
+            <>Foto de {firstLine} {lastLine}</>
+          )}
         </div>
         <div className="ponente-photo-gradient" />
 
@@ -24,6 +35,8 @@ export default function PonenteCard({
           <a
             className="ponente-social"
             href={linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`LinkedIn de ${firstLine} ${lastLine}`}
           >
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">

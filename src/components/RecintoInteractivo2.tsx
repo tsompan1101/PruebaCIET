@@ -1,26 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-type SocialPlatform = "facebook" | "instagram" | "twitter" | "linkedin" | "website";
-
-type SocialLink = {
-  platform: SocialPlatform;
-  url: string;
-};
-
-type Zone = {
-  id: string;
-  label: string;
-  xPct: number;
-  yPct: number;
-  wPct: number;
-  hPct: number;
-  image?: string;
-  infoImage?: string;
-  description?: string;
-  socialLinks?: SocialLink[];
-};
+import { useState } from "react";
+import { useLiveUpdates } from "@/hooks/useLiveUpdates";
+import type { SocialPlatform, Zone } from "@/lib/datos-publicos";
 
 const ZOOM_SCALE = 5;
 
@@ -45,19 +27,15 @@ function SocialIcon({ platform }: { platform: SocialPlatform }) {
   );
 }
 
-export default function PublicMap() {
-  const [zones, setZones] = useState<Zone[]>([]);
+export default function PublicMap({
+  initialZones,
+}: {
+  initialZones: Zone[];
+}) {
+  const zones = initialZones;
+  useLiveUpdates("zonas");
   const [selectedZone, setSelectedZone] = useState<Zone | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("/zonas.json")
-      .then((res) => res.json())
-      .then((data: Zone[]) => setZones(data))
-      .catch(() => {
-        console.warn("No se pudo cargar /zonas.json");
-      });
-  }, []);
 
   const wrapperStyle: React.CSSProperties = selectedZone
     ? {

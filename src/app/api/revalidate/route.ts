@@ -1,5 +1,4 @@
 import { revalidateTag } from "next/cache";
-import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 // El servidor Rust llama a esta ruta cada vez que cambia algo en la base
@@ -22,7 +21,7 @@ export async function POST(req: NextRequest) {
   }
 
   for (const tag of tags as string[]) {
-    revalidateTag(tag);
+    revalidateTag(tag, "max");
   }
 
   return NextResponse.json({ revalidated: true, tags, now: Date.now() });

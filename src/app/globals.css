@@ -7,6 +7,11 @@
 * Pantone Cool Gray 11 C: 84 86 90 -> gris neutro / texto y bordes
 * */
 
+
+@config "../../tailwind.config.mjs";
+@import "tailwindcss";
+
+
 :root {
   /* Valores RGB base de cada Pantone */
   --pantone-187: 144, 33, 66;

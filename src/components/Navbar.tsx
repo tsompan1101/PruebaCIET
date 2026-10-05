@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/recinto", label: "Recinto" },
-  { href: "/ponentes", label: "Participantes"},
-  { href: "/cronograma", label:"Cronograma"}
+  { href: "/recinto", label: "Mapa del Congreso" },
+  { href: "/ponentes", label: "Ponentes"},
+  { href: "/cronograma", label:"Programa"}
 ];
 
 export default function Navbar() {

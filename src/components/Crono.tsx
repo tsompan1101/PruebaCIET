@@ -1,20 +1,12 @@
-"use client";
+ "use client";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useLiveUpdates } from "@/hooks/useLiveUpdates";
+import type { Actividad } from "@/lib/datos-publicos";
 
-type Actividad = {
-    tipo: string | null;
-    tema: string | null;
-    inicio: string | null;
-    fin: string | null;
-    salon: string | null;
-    descripcion: string | null;
-    ponentes: string[];
-    moderadores: string[];
-    dependencias: string[];
-};
+const SIN_SALON = "Sin salón";
+const SALON_EVENTO = "Escenario";
 
 function getDay(iso: string) {
     return iso.split("T")[0];
@@ -44,7 +36,7 @@ export default function Cronograma ({
     const [selectedDay, setSelectedDay] = useState<string | null>(
         days[0] ?? null
     );
-    const [selected, setSelected] = useState<string | null>(null);
+    const [selected, setSelected] = useState<Actividad | null>(null);
     const [modalVisible, setModalVisible] = useState(false);
 
     const dayActividades = useMemo(
@@ -56,8 +48,12 @@ export default function Cronograma ({
     );
 
     const salas = useMemo(
-        () => Array.from (new Set(dayActividades.map((a) => a.salon ?? "Sin Salón"))).sort(), [dayActividades]
-    ).slice(1);
+        () =>
+            Array.from(new Set(dayActividades.map((a) => a.salon ?? SIN_SALON)))
+                .filter((sala) => sala !== SALON_EVENTO)
+                .sort(),
+        [dayActividades]
+    );
 
     function openActividad(actividad: Actividad){
         setSelected(actividad);
@@ -109,7 +105,7 @@ export default function Cronograma ({
 
           {times.map((time) => {
             const evento = dayActividades.find(
-              (a) => getTime(a.inicio!) === time && (a.tipo === "Evento" || a.salon === "Escenario")
+              (a) => getTime(a.inicio!) === time && (a.tipo === "Evento" || a.salon === SALON_EVENTO)
             );
 
             if (evento) {
@@ -147,7 +143,7 @@ export default function Cronograma ({
                   const actividad = dayActividades.find(
                     (a) =>
                       getTime(a.inicio!) === time &&
-                      (a.salon ?? "Sin salón") === sala
+                      (a.salon ?? SIN_SALON) === sala
                   );
                   return (
                     <div key={sala} className="cronograma-cell">
@@ -242,5 +238,4 @@ export default function Cronograma ({
       )}
     </div>
   );
-}
-    
+} 

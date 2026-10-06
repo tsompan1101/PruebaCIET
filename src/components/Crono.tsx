@@ -1,12 +1,12 @@
- "use client";
+"use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useLiveUpdates } from "@/hooks/useLiveUpdates";
-import type { Actividad } from "@/lib/datos-publicos";
+import { supabaseNavegador } from "@/lib/supabase-browser";
+import { useSupabaseRealtime } from "@/hooks/useSupabaseRealtime";
+import { obtenerPrograma, type Actividad } from "@/lib/programa";
 
 const SIN_SALON = "Sin salón";
-const SALON_EVENTO = "Escenario";
 
 function getDay(iso: string) {
     return iso.split("T")[0];
@@ -21,11 +21,19 @@ export default function Cronograma ({
 }: {
     initialData: Actividad[];
 }) {
-    const actividades = initialData;
-    useLiveUpdates("cronograma");
+    // initialData viene del servidor (SEO y primera pintura); después se mantiene al día en vivo.
+    const [actividades, setActividades] = useState<Actividad[]>(initialData);
+
+    // Cuando cambian charlas o cronograma en la base, se vuelve a leer el programa.
+    const recargar = useCallback(() => {
+        obtenerPrograma(supabaseNavegador)
+            .then(setActividades)
+            .catch((e) => console.error("No se pudo actualizar el cronograma:", e));
+    }, []);
+    useSupabaseRealtime(["charlas", "cronograma"], recargar);
 
     const days = useMemo(
-        () => 
+        () =>
             Array.from(
                 new Set(
                     actividades.filter((a) => a.inicio).map((a) => getDay(a.inicio!))
@@ -37,6 +45,11 @@ export default function Cronograma ({
         days[0] ?? null
     );
     const [selected, setSelected] = useState<Actividad | null>(null);
+
+    // Si tras una actualización el día elegido ya no existe (o aún no había ninguno), se elige el primero.
+    useEffect(() => {
+        if (days.length && (!selectedDay || !days.includes(selectedDay))) setSelectedDay(days[0]);
+    }, [days, selectedDay]);
     const [modalVisible, setModalVisible] = useState(false);
 
     const dayActividades = useMemo(
@@ -47,10 +60,11 @@ export default function Cronograma ({
         () => Array.from(new Set(dayActividades.map((a) => getTime(a.inicio!)))).sort(), [dayActividades]
     );
 
+    // "Escenario" no tiene columna propia: sus eventos ocupan toda la fila.
     const salas = useMemo(
         () =>
             Array.from(new Set(dayActividades.map((a) => a.salon ?? SIN_SALON)))
-                .filter((sala) => sala !== SALON_EVENTO)
+                .filter((sala) => sala !== "Escenario")
                 .sort(),
         [dayActividades]
     );
@@ -105,7 +119,7 @@ export default function Cronograma ({
 
           {times.map((time) => {
             const evento = dayActividades.find(
-              (a) => getTime(a.inicio!) === time && (a.tipo === "Evento" || a.salon === SALON_EVENTO)
+              (a) => getTime(a.inicio!) === time && (a.tipo === "Evento" || a.salon === "Escenario")
             );
 
             if (evento) {
@@ -238,4 +252,4 @@ export default function Cronograma ({
       )}
     </div>
   );
-} 
+}

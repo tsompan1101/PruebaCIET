@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { useLiveUpdates } from "@/hooks/useLiveUpdates";
-import type { SocialPlatform, Zone } from "@/lib/datos-publicos";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { supabaseNavegador } from "@/lib/supabase-browser";
+import { useSupabaseRealtime } from "@/hooks/useSupabaseRealtime";
+import { leerViewBox, obtenerZonas, type SocialPlatform, type VBox, type Zone } from "@/lib/mapa";
 
 const ZOOM_SCALE = 5;
+const MAP_SRC = "/mapa1.svg";
 
 const SOCIAL_ICON_PATHS: Record<SocialPlatform, string> = {
   facebook:
@@ -27,15 +29,34 @@ function SocialIcon({ platform }: { platform: SocialPlatform }) {
   );
 }
 
-export default function PublicMap({
-  initialZones,
-}: {
-  initialZones: Zone[];
-}) {
-  const zones = initialZones;
-  useLiveUpdates("zonas");
+export default function PublicMap() {
+  const [zones, setZones] = useState<Zone[]>([]);
   const [selectedZone, setSelectedZone] = useState<Zone | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const viewBox = useRef<VBox | null>(null);
+
+  // Las zonas salen de Supabase (tabla zonas + su stand). El viewBox del plano se lee una sola vez.
+  const cargar = useCallback(async () => {
+    try {
+      viewBox.current ??= await leerViewBox(MAP_SRC);
+      setZones(await obtenerZonas(supabaseNavegador, viewBox.current));
+    } catch (e) {
+      console.warn("No se pudieron cargar las zonas:", e);
+    }
+  }, []);
+
+  useEffect(() => {
+    void cargar();
+  }, [cargar]);
+
+  // Si alguien edita el mapa en el dashboard, se actualiza sin recargar la página.
+  useSupabaseRealtime(["zonas", "stands"], cargar);
+
+  // Mantiene el panel abierto al día (o lo cierra si la zona ya no existe).
+  useEffect(() => {
+    setSelectedZone((actual) => (actual ? (zones.find((z) => z.id === actual.id) ?? null) : null));
+  }, [zones]);
 
   const wrapperStyle: React.CSSProperties = selectedZone
     ? {
@@ -53,7 +74,7 @@ export default function PublicMap({
           <div className="map-zoom-wrapper" style={wrapperStyle}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/mapa1.svg"
+              src={MAP_SRC}
               alt="Mapa"
               className="map-image"
               draggable={false}

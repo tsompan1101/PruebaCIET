@@ -1,9 +1,7 @@
-import InteractiveMap from "@/components/InteractiveMapa";
+import PublicMap from "@/components/RecintoInteractivo2";
+// Ajusta la ruta de import según tu alias.
 
-export default function MapaPage() {
-  return (
-    <div className="page-mapa">
-      <InteractiveMap />
-    </div>
-  );
+// El mapa es un componente cliente: lee las zonas de Supabase y se actualiza en vivo.
+export default function MapaPublicoPage() {
+  return <PublicMap />;
 }

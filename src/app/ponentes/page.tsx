@@ -7,10 +7,6 @@ interface Ponente extends PonenteCardProps {
   id: number;
 }
 
-// Quién aparece en esta página, según participantes.participacion_congreso.
-// (Los valores deben coincidir con el enum de la base.)
-const PARTICIPACIONES = ["Conferencista Magistral", "Panelista", "Tallerista"];
-
 interface FilaParticipante {
   id: number;
   nombre_completo: string;
@@ -36,13 +32,14 @@ async function obtenerPonentes(): Promise<Ponente[]> {
   const { data, error } = await supabasePublico("participantes")
     .from("participantes")
     .select("id,nombre_completo,institucion,cargo_puesto,imagen,redes")
-    .in("participacion_congreso", PARTICIPACIONES)
-    .order("id");
+    .not("orden_publico", "is", null) // los eligió el dashboard (sección «En la página pública»)
+    .order("orden_publico");
 
   if (error) {
-    console.error("No se pudieron cargar los ponentes:", error.message);
+    console.error("No se pudieron cargar los ponentes:", error.code, error.message);
     return [];
   }
+  console.log(`Ponentes: ${data.length} filas desde Supabase`);
 
   return (data as FilaParticipante[]).map((p) => {
     const [firstLine, lastLine] = dividirNombre(p.nombre_completo);
@@ -64,7 +61,6 @@ export default async function Ponentes() {
     <div className="page-ponentes">
       <div className="ponentes-banner">
         {/* FONDO_PONENTES_AQUI: reemplazar por la foto de la instalación/refinería */}
-        <img src="./Ponentes-2.webp" />
         <div className="ponentes-banner-overlay" />
       </div>
 

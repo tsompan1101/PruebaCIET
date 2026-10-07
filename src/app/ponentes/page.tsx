@@ -79,7 +79,7 @@ export default async function Ponentes() {
       ) : (
         <div className="ponentes-grid">
           {ponentes.map(({ id, ...ponente }) => (
-            <PonenteCard key={id} {...ponente} />
+            <PonenteCard key={id} href={`/ponentes/${id}`} {...ponente} />
           ))}
         </div>
       )}

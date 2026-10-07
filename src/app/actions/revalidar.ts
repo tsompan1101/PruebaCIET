@@ -7,5 +7,5 @@ const TAGS_PERMITIDOS = new Set(["cronograma", "zonas", "participantes"]);
 
 export async function revalidarTag(tag: string) {
   if (!TAGS_PERMITIDOS.has(tag)) return;
-  revalidateTag(tag); // En Next 16: revalidateTag(tag, "max")
+  revalidateTag(tag, "max");
 }

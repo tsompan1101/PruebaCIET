@@ -20,7 +20,7 @@ type FilaPrograma = Omit<Actividad, "ponentes" | "moderadores" | "dependencias">
 
 // Las horas de las charlas se guardan "tal cual" en UTC (9:00 del evento = 09:00Z). Aquí solo se
 // normalizan a 'AAAA-MM-DDTHH:mm:00' para que getDay/getTime del cronograma las lean sin convertir.
-const hora = (iso: string | null) => (iso ? new Date(iso).toISOString().slice(0, 19) : null);
+export const horaTalCual = (iso: string | null) => (iso ? new Date(iso).toISOString().slice(0, 19) : null);
 
 // Sirve con cualquier cliente: supabasePublico() en el servidor o supabaseNavegador en el navegador.
 export async function obtenerPrograma(db: SupabaseClient): Promise<Actividad[]> {
@@ -32,8 +32,8 @@ export async function obtenerPrograma(db: SupabaseClient): Promise<Actividad[]> 
 
   return ((data ?? []) as FilaPrograma[]).map((a) => ({
     ...a,
-    inicio: hora(a.inicio),
-    fin: hora(a.fin),
+    inicio: horaTalCual(a.inicio),
+    fin: horaTalCual(a.fin),
     ponentes: a.ponentes ?? [],
     moderadores: a.moderadores ?? [],
     dependencias: a.dependencias ?? [],

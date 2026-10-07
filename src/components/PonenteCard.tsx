@@ -1,9 +1,12 @@
+import Link from "next/link";
+
 export interface PonenteCardProps {
   firstLine: string;
   lastLine: string;
   role: string;
   linkedinUrl?: string | null;
   imageUrl?: string | null;
+  href?: string; // si viene, toda la tarjeta lleva a esa página
 }
 
 export default function PonenteCard({
@@ -12,9 +15,20 @@ export default function PonenteCard({
   role,
   linkedinUrl,
   imageUrl,
+  href,
 }: PonenteCardProps) {
   return (
-    <article className="ponente-card">
+    <article className="ponente-card" style={{ position: "relative" }}>
+      {href && (
+        // Enlace que cubre toda la tarjeta. Los estilos van en línea (ganan a cualquier CSS) porque,
+        // sin position:absolute, un <a> vacío mide solo 1 píxel.
+        <Link
+          href={href}
+          className="ponente-card-link"
+          aria-label={`Ver más sobre ${firstLine} ${lastLine}`}
+          style={{ position: "absolute", inset: 0, zIndex: 1, display: "block", cursor: "pointer", borderRadius: "inherit" }}
+        />
+      )}
       <div className="ponente-photo">
         <div className="ponente-photo-placeholder">
           {imageUrl ? (
@@ -34,6 +48,7 @@ export default function PonenteCard({
         {linkedinUrl && (
           <a
             className="ponente-social"
+            style={{ zIndex: 2 }} // por encima del enlace que cubre la tarjeta
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"

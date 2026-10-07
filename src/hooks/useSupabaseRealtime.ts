@@ -22,10 +22,12 @@ export function useSupabaseRealtime(tablas: string[], onChange: () => void) {
     };
 
     // Nombre único: dos componentes pueden suscribirse a las mismas tablas sin chocar.
-    const canal = supabaseNavegador.channel(`live-${crypto.randomUUID()}`);
+    const canal = supabaseNavegador.channel('canal-pruebas');
+
     for (const tabla of clave.split(",")) {
       canal.on("postgres_changes", { event: "*", schema: "public", table: tabla }, disparar);
     }
+
     canal.subscribe();
 
     return () => {

@@ -1,7 +1,7 @@
 import PublicMap from "@/components/RecintoInteractivo2";
-import { getZonas } from "@/lib/datos-publicos";
+// Ajusta la ruta de import según tu alias.
 
-export default async function Page() {
-  const zonas = await getZonas();
-  return <PublicMap initialZones={zonas} />;
+// El mapa es un componente cliente: lee las zonas de Supabase y se actualiza en vivo.
+export default function MapaPublicoPage() {
+  return <PublicMap />;
 }

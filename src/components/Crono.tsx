@@ -9,84 +9,107 @@ import { obtenerPrograma, type Actividad } from "@/lib/programa";
 const SIN_SALON = "Sin salón";
 
 function getDay(iso: string) {
-    return iso.split("T")[0];
+  return iso.split("T")[0];
 }
 
 function getTime(iso: string) {
-    return iso.split("T")[1]?.slice(0,5) ?? "";
+  return iso.split("T")[1]?.slice(0, 5) ?? "";
 }
 
-export default function Cronograma ({
-    initialData,
+export default function Cronograma({
+  initialData,
 }: {
-    initialData: Actividad[];
+  initialData: Actividad[];
 }) {
-    // initialData viene del servidor (SEO y primera pintura); después se mantiene al día en vivo.
-    const [actividades, setActividades] = useState<Actividad[]>(initialData);
+  const [actividades, setActividades] = useState<Actividad[]>(initialData);
 
-    // Cuando cambian charlas o cronograma en la base, se vuelve a leer el programa.
-    const recargar = useCallback(() => {
-        obtenerPrograma(supabaseNavegador)
-            .then(setActividades)
-            .catch((e) => console.error("No se pudo actualizar el cronograma:", e));
-    }, []);
-    useSupabaseRealtime(["charlas", "cronograma"], recargar);
+  const recargar = useCallback(() => {
+    obtenerPrograma(supabaseNavegador)
+      .then(setActividades)
+      .catch((e) => console.error("No se pudo actualizar el cronograma:", e));
+  }, []);
 
-    const days = useMemo(
-        () =>
-            Array.from(
-                new Set(
-                    actividades.filter((a) => a.inicio).map((a) => getDay(a.inicio!))
-                )
-            ).sort(), [actividades]
-    );
+  useSupabaseRealtime(["charlas", "cronograma"], recargar);
 
-    const [selectedDay, setSelectedDay] = useState<string | null>(
-        days[0] ?? null
-    );
-    const [selected, setSelected] = useState<Actividad | null>(null);
+  const days = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          actividades.filter((a) => a.inicio).map((a) => getDay(a.inicio!))
+        )
+      ).sort(),
+    [actividades]
+  );
 
-    // Si tras una actualización el día elegido ya no existe (o aún no había ninguno), se elige el primero.
-    useEffect(() => {
-        if (days.length && (!selectedDay || !days.includes(selectedDay))) setSelectedDay(days[0]);
-    }, [days, selectedDay]);
-    const [modalVisible, setModalVisible] = useState(false);
+  const [selectedDay, setSelectedDay] = useState<string | null>(
+    days[0] ?? null
+  );
+  const [selected, setSelected] = useState<Actividad | null>(null);
 
-    const dayActividades = useMemo(
-        () => actividades.filter((a) => a.inicio && getDay(a.inicio)  === selectedDay), [actividades, selectedDay]
-    );
+  useEffect(() => {
+    if (days.length && (!selectedDay || !days.includes(selectedDay))) {
+      setSelectedDay(days[0]);
+    }
+  }, [days, selectedDay]);
 
-    const times = useMemo(
-        () => Array.from(new Set(dayActividades.map((a) => getTime(a.inicio!)))).sort(), [dayActividades]
-    );
+  const [modalVisible, setModalVisible] = useState(false);
 
-    // "Escenario" no tiene columna propia: sus eventos ocupan toda la fila.
-    const salas = useMemo(
-        () =>
-            Array.from(new Set(dayActividades.map((a) => a.salon ?? SIN_SALON)))
-                .filter((sala) => sala !== "Escenario")
-                .sort(),
-        [dayActividades]
-    );
+  const dayActividades = useMemo(
+    () =>
+      actividades.filter(
+        (a) => a.inicio && getDay(a.inicio) === selectedDay
+      ),
+    [actividades, selectedDay]
+  );
 
-    function openActividad(actividad: Actividad){
-        setSelected(actividad);
-        requestAnimationFrame(() => setModalVisible(true));
+  const times = useMemo(
+    () =>
+      Array.from(
+        new Set(dayActividades.map((a) => getTime(a.inicio!)))
+      ).sort(),
+    [dayActividades]
+  );
+
+  // Lógica para determinar los salones del día actual
+  const salas = useMemo(() => {
+    // Obtenemos los salones de las actividades del día que no sean "Escenario"
+    const salasDelDia = Array.from(
+      new Set(
+        dayActividades
+          .map((a) => a.salon ?? SIN_SALON)
+          .filter((sala) => sala !== "Escenario")
+      )
+    ).sort();
+
+    // Si el día tiene salones específicos, mostramos esos salones.
+    // Si no hay salones en ese día (es decir, es puro evento/escenario),
+    // devolvemos ["Escenario"] (o [""] si prefieres dejar el encabezado totalmente en blanco).
+    if (salasDelDia.length > 0) {
+      return salasDelDia;
     }
 
-    function closeActividad() {
-        setModalVisible(false);
-        setTimeout(() => setSelected(null), 200);
-    }
+    return [""]; // Cambia a [""] si quieres que quede la casilla vacía/en blanco
+  }, [dayActividades]);
 
-    function formatDay(day: string) {
-        const date = new Date(day + "T00:00:00");
-        return date.toLocaleDateString("es-MX", {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-        });
-    }
+  function openActividad(actividad: Actividad) {
+    setSelected(actividad);
+    requestAnimationFrame(() => setModalVisible(true));
+  }
+
+  function closeActividad() {
+    setModalVisible(false);
+    setTimeout(() => setSelected(null), 200);
+  }
+
+  function formatDay(day: string) {
+    const date = new Date(day + "T00:00:00");
+    return date.toLocaleDateString("es-MX", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    });
+  }
+
   return (
     <div className="cronograma-page">
       <div className="cronograma-day-tabs">
@@ -107,19 +130,24 @@ export default function Cronograma ({
         <div
           className="cronograma-grid"
           style={{
-            gridTemplateColumns: `100px repeat(${salas.length || 1}, 1fr)`,
+            gridTemplateColumns: `100px repeat(${salas.length}, 1fr)`,
           }}
         >
+          {/* Esquina del horario */}
           <div className="cronograma-cell cronograma-corner"></div>
-          {salas.map((sala) => (
-            <div key={sala} className="cronograma-cell cronograma-header">
+
+          {/* Encabezado de Salones o Escenario */}
+          {salas.map((sala, idx) => (
+            <div key={idx} className="cronograma-cell cronograma-header">
               {sala}
             </div>
           ))}
 
           {times.map((time) => {
             const evento = dayActividades.find(
-              (a) => getTime(a.inicio!) === time && (a.tipo === "Evento" || a.salon === "Escenario")
+              (a) =>
+                getTime(a.inicio!) === time &&
+                (a.tipo === "Evento" || a.salon === "Escenario")
             );
 
             if (evento) {
@@ -128,15 +156,17 @@ export default function Cronograma ({
                   <div className="cronograma-cell cronograma-time">{time}</div>
                   <div
                     className="cronograma-cell cronograma-evento-cell"
-                    style={{ gridColumn: `2 / span ${salas.length || 1}` }}
+                    style={{ gridColumn: `2 / span ${salas.length}` }}
                   >
                     <button
                       className="cronograma-taller-card cronograma-evento-card"
                       onClick={() => openActividad(evento)}
                     >
-                      <span className="cronograma-taller-tipo">
-                        {evento.tipo}
-                      </span>
+                      {evento.tipo && (
+                        <span className="cronograma-taller-tipo">
+                          {evento.tipo}
+                        </span>
+                      )}
                       <span className="cronograma-taller-title">
                         {evento.tema}
                       </span>
@@ -153,14 +183,14 @@ export default function Cronograma ({
             return (
               <div key={time} className="cronograma-row-fragment">
                 <div className="cronograma-cell cronograma-time">{time}</div>
-                {salas.map((sala) => {
+                {salas.map((sala, idx) => {
                   const actividad = dayActividades.find(
                     (a) =>
                       getTime(a.inicio!) === time &&
                       (a.salon ?? SIN_SALON) === sala
                   );
                   return (
-                    <div key={sala} className="cronograma-cell">
+                    <div key={idx} className="cronograma-cell">
                       {actividad && (
                         <button
                           className="cronograma-taller-card"
@@ -217,17 +247,17 @@ export default function Cronograma ({
               {selected.salon}
             </p>
 
-            {selected.ponentes.length > 0 && (
+            {selected.ponentes?.length > 0 && (
               <p>
                 <strong>Ponentes:</strong> {selected.ponentes.join(", ")}
               </p>
             )}
-            {selected.moderadores.length > 0 && (
+            {selected.moderadores?.length > 0 && (
               <p>
                 <strong>Moderadores:</strong> {selected.moderadores.join(", ")}
               </p>
             )}
-            {selected.dependencias.length > 0 && (
+            {selected.dependencias?.length > 0 && (
               <p>
                 <strong>Requiere antes:</strong>{" "}
                 {selected.dependencias.join(", ")}

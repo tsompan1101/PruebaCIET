@@ -1,105 +1,136 @@
 import Link from 'next/link';
 
 export default function Footer() {
-  // Datos implícitos que antes venían de content.ts
   const footerData = {
-    logo: "/images/tu-logo.svg", // Asegúrate de que esté en la carpeta public/
-    description: "Breve descripción de tu organización o proyecto.",
+    logo: "/logo.webp", // Reemplaza con la ruta de tu logo
     contact: {
-      email: "contacto@tudominio.com",
-      emailIcon: "/icons/email.svg",
-      phone: "+52 834 000 0000",
-      phoneIcon: "/icons/phone.svg",
+      title: "Contacto e Informes",
+      subtitle: "Secretaría de Desarrollo Energético Tamaulipas",
+      address: "Torre Gubernamental J.L.P. Piso No. 8 Blvd. Praxedis Balboa S/N; Col. Hidalgo; CP 87090 Ciudad Victoria, Tamaulipas.",
+      addressIcon: "/location.svg",
+      email: "congreso.energia@tamaulipas.gob.mx",
+      emailIcon: "/email.svg",
+      phone: "(+52) 834 318 8000 - Ext. 58175",
+      phoneIcon: "/phone.svg",
     },
-    redirectIcon: "/icons/redirect.svg",
-    quickLinks: [
-      { label: "Cronograma", href: "/cronograma" },
-      { label: "Mapa", href: "/mapa" },
+    socialLinks: [
+      { label: "Facebook", href: "https://www.facebook.com/share/1E5fxCdUa7/", icon: "/facebook.svg" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/sedenertam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", icon: "/linkedin.svg" },
+      { label: "Instagram", href: "https://www.instagram.com/gobtam?igsh=Z2FheGw5NDl1YThn", icon: "/instagram.svg" },
+      { label: "X", href: "https://x.com/SedenerTam", icon: "/x.svg" },
+      { label: "Youtube", href: "https://www.youtube.com/@Secretar%C3%ADadeDesarrolloEnerg%C3%A9ti", icon: "/youtube.svg" },
     ],
-    social: [
-      { label: "Aviso de Privacidad", href: "/privacidad" },
-      { label: "Términos y Condiciones", href: "/terminos" },
-    ],
+    credits: {
+      title: "Sitio desarrollado por:",
+      logo: "/logo-sedener.png", // Reemplaza con la ruta del logo correspondiente
+      alt: "Secretaría de Desarrollo Energético Tamaulipas"
+    }
   };
 
   return (
-    <footer className="bg-brand-darker py-12 text-white">
-      <div className="container-page grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        <div>
-          <span className="font-display text-lg font-bold">
-            <img
-              src={footerData.logo}
-              alt=""
-              aria-hidden="true"
-              className="w-80 opacity-80 brightness-0 invert"
-            />
-          </span>
-          <p className="mt-3 max-w-xs text-sm text-white/70">{footerData.description}</p>
+    <footer style={{ backgroundColor: '#1c1b18', color: '#b0a89a', padding: '48px 24px', fontFamily: 'sans-serif' }}>
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '40px'
+        }}
+      >
+        {/* Columna 1: Logo Principal */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img
+            src={footerData.logo}
+            alt="Congreso Internacional de Energía Tamaulipas 2026"
+            style={{ width: '256px', maxWidth: '100%', objectFit: 'contain' }}
+          />
+        </div>
 
-          <ul className="mt-4 space-y-3 text-sm text-white/80">
-            <li className="flex items-center gap-2">
+        {/* Columna 2: Contacto e Informes */}
+        <div>
+          <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', fontWeight: 'bold', color: '#e6dfd3' }}>
+            {footerData.contact.title}
+          </h3>
+          <p style={{ margin: '0 0 12px 0', fontSize: '14px', fontWeight: '600', color: '#a39a8c' }}>
+            {footerData.contact.subtitle}
+          </p>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '12px', lineHeight: '1.6', color: '#8e8678' }}>
+            <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }}>
+              <img
+                src={footerData.contact.addressIcon}
+                alt=""
+                aria-hidden="true"
+                style={{ width: '16px', height: '16px', marginTop: '2px', flexShrink: 0, filter: 'brightness(0) invert(1)', opacity: 0.7 }}
+              />
+              <span>{footerData.contact.address}</span>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
               <img
                 src={footerData.contact.emailIcon}
                 alt=""
                 aria-hidden="true"
-                className="h-4 w-4 shrink-0 opacity-80 brightness-0 invert"
+                style={{ width: '16px', height: '16px', flexShrink: 0, filter: 'brightness(0) invert(1)', opacity: 0.7 }}
               />
-              <a href={`mailto:${footerData.contact.email}`} className="break-all hover:text-white">
+              <a href={`mailto:${footerData.contact.email}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                 {footerData.contact.email}
               </a>
             </li>
-            <li className="flex items-center gap-2">
+            <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <img
                 src={footerData.contact.phoneIcon}
                 alt=""
                 aria-hidden="true"
-                className="h-4 w-4 shrink-0 opacity-80 brightness-0 invert"
+                style={{ width: '16px', height: '16px', flexShrink: 0, filter: 'brightness(0) invert(1)', opacity: 0.7 }}
               />
-              <a href={`tel:${footerData.contact.phone}`} className="hover:text-white">
+              <a href={`tel:${footerData.contact.phone.replace(/[^0-9+]/g, '')}`} style={{ color: 'inherit', textDecoration: 'none' }}>
                 {footerData.contact.phone}
               </a>
             </li>
           </ul>
         </div>
 
+        {/* Columna 3: Redes Sociales */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-white/60">
-            Links Rápidos
-          </h4>
-          <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {footerData.quickLinks.map((link) => (
-              <li key={link.label + link.href}>
-                {/* Puedes usar Link de Next.js si es una ruta interna */}
-                <Link href={link.href} className="flex items-center gap-2 text-sm text-white/80 hover:text-white">
+          <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', fontWeight: 'bold', color: '#e6dfd3' }}>
+            Redes Sociales
+          </h3>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '12px', color: '#8e8678' }}>
+            {footerData.socialLinks.map((social) => (
+              <li key={social.label} style={{ marginBottom: '8px' }}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'inherit', textDecoration: 'none' }}
+                >
                   <img
-                    src={footerData.redirectIcon}
+                    src={social.icon}
                     alt=""
                     aria-hidden="true"
-                    className="h-3.5 w-3.5 shrink-0 opacity-70 brightness-0 invert"
+                    style={{ width: '14px', height: '14px', flexShrink: 0, filter: 'brightness(0) invert(1)', opacity: 0.7 }}
                   />
-                  {link.label}
-                </Link>
+                  <span>{social.label}</span>
+                </a>
               </li>
             ))}
           </ul>
         </div>
 
+        {/* Columna 4: Créditos de Desarrollo */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-white/60">
-            Más información
-          </h4>
-          <div className="mt-4 flex flex-wrap gap-4">
-            {footerData.social.map((s) => (
-              <Link key={s.label} href={s.href} className="text-sm text-white/70 hover:text-white">
-                {s.label}
-              </Link>
-            ))}
+          <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', fontWeight: 'bold', color: '#e6dfd3' }}>
+            {footerData.credits.title}
+          </h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <img
+              src={footerData.credits.logo}
+              alt={footerData.credits.alt}
+              style={{ height: '88px', width: 'auto', objectFit: 'contain' }}
+            />
           </div>
         </div>
-      </div>
 
-      <div className="container-page mt-10 border-t border-white/10 pt-6 text-xs text-white/50">
-        © {new Date().getFullYear()} — Todos los derechos reservados.
       </div>
     </footer>
   );

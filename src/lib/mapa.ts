@@ -46,7 +46,7 @@ type StandRow = {
   descripcion: string | null;
   imagen_url: string | null;
 };
-type ZonaRow = { id: number; data: Record<string, unknown> | null; stands: StandRow[] | null };
+type ZonaRow = { id: number; datos: Record<string, unknown> | null; stands: StandRow[] | null };
 
 const num = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? v : undefined);
 const txt = (v: unknown) => (typeof v === "string" && v.trim() ? v : undefined);
@@ -72,16 +72,28 @@ function geometria(d: Record<string, unknown>, vb: VBox): Pick<Zone, "xPct" | "y
 export async function obtenerZonas(db: SupabaseClient, vb: VBox): Promise<Zone[]> {
   const { data, error } = await db
     .from("zonas")
-    .select("id,data,stands(id,numero_stand,nombre_stand,descripcion,imagen_url)")
+    .select("id,datos,stands(id,numero_stand,nombre_stand,descripcion,imagen_url)") // <-- Usar 'datos'
     .order("id");
+
   if (error) throw new Error(error.message);
 
   const zonas: Zone[] = [];
   for (const r of (data ?? []) as unknown as ZonaRow[]) {
-    const d = r.data ?? {};
+    // Leemos 'datos' (y por compatibilidad si existiera 'data')
+    const rawData = r.datos ?? (r as Record<string, unknown>).data;
+    let d: Record<string, unknown> = {};
+
+    if (typeof rawData === "string") {
+      try { d = JSON.parse(rawData); } catch { d = {}; }
+    } else if (rawData && typeof rawData === "object") {
+      d = rawData as Record<string, unknown>;
+    }
+
     const g = geometria(d, vb);
-    if (!g) continue; // zona sin geometría: no se dibuja
-    const stand = r.stands?.[0];
+    if (!g) continue; // Con 'datos' bien mapeado, las zonas ya no se omitirán
+
+    const stand = Array.isArray(r.stands) ? r.stands[0] : r.stands;
+
     zonas.push({
       id: String(r.id),
       label: stand?.nombre_stand || txt(d.nombre) || txt(d.label) || (stand ? `Stand ${stand.numero_stand}` : ""),

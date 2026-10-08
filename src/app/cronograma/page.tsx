@@ -13,5 +13,16 @@ export default async function CronogramaPage() {
   }
 
   // El componente cliente se encarga de mantenerlo al día con Supabase Realtime.
-  return <Cronograma initialData={initialData} />;
-}
+  return (
+      <>
+        <div className="ponentes-header" style={{ paddingTop: "80px" }}>
+          <h1 className="ponentes-title">Programa del Congreso</h1>
+          <p className="ponentes-intro">
+            Conoce las diversas <strong>platicas y conferencias</strong> que están dentro del{" "}
+            <strong>Congreso.</strong>
+          </p>
+        </div>
+        <Cronograma initialData={initialData} />
+      </>
+    );
+  }

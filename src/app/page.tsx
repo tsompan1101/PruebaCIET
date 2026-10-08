@@ -1,3 +1,8 @@
+import Section from "@/components/Sections";
+import CtaSection from "@/components/CtaSection";
+import EjesTematicosSection from "@/components/EjesTematicos";
+import ExpoTampicoSection from "@/components/ExpoSection";
+
 export default function HomePage() {
   return (
     <div className="page-home">
@@ -37,12 +42,17 @@ export default function HomePage() {
             </p>
 
             <div className="hero-actions">
-              <button className="btn btn-primary" type="button">
+              <a
+                href="https://forms.gle/Efy2RDsgyjvbi8J48"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Regístrate ahora
-              </button>
-              <button className="btn btn-outline" type="button">
+              </a>
+              <a className="btn btn-outline" href="#Evento">
                 Acerca del evento
-              </button>
+              </a>
             </div>
           </div>
 
@@ -62,7 +72,12 @@ export default function HomePage() {
         >
           <path d="M0,48 C240,90 480,0 720,24 C960,48 1200,84 1440,36 L1440,90 L0,90 Z" />
         </svg>
-      </section>
+          </section>
+
+          <Section />
+          <CtaSection />
+          <EjesTematicosSection />
+          <ExpoTampicoSection />
 
     </div>
   );

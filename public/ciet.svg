@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente para el rombo rojo -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a61937" />
+      <stop offset="100%" stop-color="#9e1330" />
+    </linearGradient>
+
+    <!-- Sombra superior derecha del rayo -->
+    <linearGradient id="shadowRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#520716" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#520716" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Sombra inferior izquierda del rayo -->
+    <linearGradient id="shadowLeft" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#40030f" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#40030f" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rombo base de esquinas redondeadas -->
+  <rect x="30" y="30" width="140" height="140" rx="30" ry="30" fill="url(#bgGradient)" transform="rotate(45 100 100)" />
+
+  <!-- Sombra interior superior derecha -->
+  <path d="M 103,50 L 131,100 L 103,100 Z" fill="url(#shadowRight)" />
+
+  <!-- Sombra interior inferior izquierda -->
+  <path d="M 97,150 L 69,100 L 97,100 Z" fill="url(#shadowLeft)" />
+
+  <!-- Rayo blanco central -->
+  <path d="M 103,50 L 63,116 A 4,4 0 0,0 66,122 L 94,122 L 97,150 L 137,84 A 4,4 0 0,0 134,78 L 106,78 Z" fill="#ffffff" />
+</svg>

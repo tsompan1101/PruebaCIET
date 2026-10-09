@@ -6,7 +6,7 @@ export default function Footer() {
     contact: {
       title: "Contacto e Informes",
       subtitle: "Secretaría de Desarrollo Energético Tamaulipas",
-      address: "Torre Gubernamental J.L.P. Piso No. 8 Blvd. Praxedis Balboa S/N; Col. Hidalgo; CP 87090 Ciudad Victoria, Tamaulipas.",
+      address: "Carretera Victoria-Soto la Marina, km.5.5, Parque Tecnotam edificio empresarial, piso 2, CP. 87137, Cd. Victoria, Tamaulipas.",
       addressIcon: "/location.svg",
       email: "congreso.energia@tamaulipas.gob.mx",
       emailIcon: "/email.svg",

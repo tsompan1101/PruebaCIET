@@ -1346,6 +1346,7 @@ body {
   line-height: 1.65;
   margin-bottom: 1rem;
   font-size: 0.975rem;
+  text-align: justify;
 }
 
 .pd-seccion p:last-child {

@@ -19,7 +19,7 @@ export default function Navbar() {
       {/* Logo envuelto en un Link a la página principal */}
       <Link href="/" className="navbar-logo-link">
         <Image
-          src="/g1.webp" /* Asegúrate de que la imagen esté ubicada en la carpeta public/logo.png */
+          src="/g2.webp" /* Asegúrate de que la imagen esté ubicada en la carpeta public/logo.png */
           alt="Logo"
           width={160}
           height={80}
